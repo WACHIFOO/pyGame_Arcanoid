@@ -1,7 +1,7 @@
 from classes.game import Game
+from classes.player import Player
 
 """
-# from classes.player import Player
 # from classes.sardina import Sardina
 # from classes.scoreUX import ScoreUX
 """
@@ -9,6 +9,7 @@ import pygame
 
 if __name__ == '__main__':
     game = Game()
+    player = Player()
     game.flip()
 
     x = 250
@@ -21,57 +22,64 @@ if __name__ == '__main__':
         # Iniciamos el latido
         game.start_hearthbeat()
 
-        # Test mover jugador
-        keys = pygame.key.get_pressed()
+        # Obtenemos la tecla pulsada y movemos el jugador
+        pressed = pygame.key.get_pressed()
+        player.movement(pressed)
 
-        # Si hay movimiento aplicamos velocidad
-        if 1 in keys:
-            speed = 1.5
-        else:
-            if speed > 1.1:
-                speed -= 0.1
+        # Renderizamos el jugador
+        player.draw(game.screen)
 
-        # Contrtolamos que tecla pulsa
-        if keys[pygame.K_LEFT]:
-            x -= 10
-        if keys[pygame.K_RIGHT]:
-            x += 10
-        if keys[pygame.K_UP]:
-            y -= 10
-        if keys[pygame.K_DOWN]:
-            y += 10
+        # # Test mover jugador
+        # keys = pygame.key.get_pressed()
+        #
+        # # Si hay movimiento aplicamos velocidad
+        # if 1 in keys:
+        #     speed = 1.5
+        # else:
+        #     if speed > 1.1:
+        #         speed -= 0.1
 
-        # if keys[pygame.K_LEFT] and keys[pygame.K_UP]:
-        #     x -= 1
-        #     y -= 1
-        # elif keys[pygame.K_LEFT] and keys[pygame.K_DOWN]:
-        #     x -= 1
-        #     y += 1
-        # elif keys[pygame.K_RIGHT] and keys[pygame.K_UP]:
-        #     x += 1
-        #     y -= 1
-        # elif keys[pygame.K_RIGHT] and keys[pygame.K_DOWN]:
-        #     x += 1
-        #     y += 1
-
-        # Si llega a uno de los bordes que se vaya al otro lao
-        print(x)
-        # Derecha
-        if x >= 499:
-            x = 1
-        # Izquieda
-        if x <= 0:
-            x = 499
-        # Abajo
-        if y >= 499:
-            y = 1
-        # Arriba
-        if y <= 0:
-            y = 499
-
-        # print(str(x) + " - " + str(speed*x))
-        # print(str(y) + " - " + str(speed*y))
-        pygame.draw.circle(game.screen, (255, 255, 255), (x, y), 15)
+        # # Contrtolamos que tecla pulsa
+        # if keys[pygame.K_LEFT]:
+        #     x -= 10
+        # if keys[pygame.K_RIGHT]:
+        #     x += 10
+        # if keys[pygame.K_UP]:
+        #     y -= 10
+        # if keys[pygame.K_DOWN]:
+        #     y += 10
+        #
+        # # if keys[pygame.K_LEFT] and keys[pygame.K_UP]:
+        # #     x -= 1
+        # #     y -= 1
+        # # elif keys[pygame.K_LEFT] and keys[pygame.K_DOWN]:
+        # #     x -= 1
+        # #     y += 1
+        # # elif keys[pygame.K_RIGHT] and keys[pygame.K_UP]:
+        # #     x += 1
+        # #     y -= 1
+        # # elif keys[pygame.K_RIGHT] and keys[pygame.K_DOWN]:
+        # #     x += 1
+        # #     y += 1
+        #
+        # # Si llega a uno de los bordes que se vaya al otro lao
+        # print(x)
+        # # Derecha
+        # if x >= 499:
+        #     x = 1
+        # # Izquieda
+        # if x <= 0:
+        #     x = 499
+        # # Abajo
+        # if y >= 499:
+        #     y = 1
+        # # Arriba
+        # if y <= 0:
+        #     y = 499
+        #
+        # # print(str(x) + " - " + str(speed*x))
+        # # print(str(y) + " - " + str(speed*y))
+        # pygame.draw.circle(game.screen, (255, 255, 255), (x, y), 15)
 
         # Finalizamos el latido
         game.end_hearthbeat()
