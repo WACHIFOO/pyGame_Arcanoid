@@ -7,7 +7,8 @@ from random import randint
 class Ball:
     def __init__(self):
         self.force = 5  # Fuerza para el movimiento
-        self.ball = pygame.image.load("sprites/Sardine.png")
+        self.ball_image = pygame.image.load("sprites/apple.png")
+        self.ball = pygame.transform.scale(self.ball_image, (50, 50))
 
         # Tema posicionamineto en pantalla
         self.ball_rect = self.ball.get_rect()

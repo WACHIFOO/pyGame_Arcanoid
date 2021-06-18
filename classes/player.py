@@ -4,7 +4,8 @@ import pygame
 class Player:
     def __init__(self):
         self.force = 5
-        self.player = pygame.image.load("sprites/player.png")
+        self.player_image = pygame.image.load("sprites/leaf.png")
+        self.player = pygame.transform.scale(self.player_image, (80, 80))
         self.player_rect = self.player.get_rect()
         self.player_rect.x = 250
         self.player_rect.y = 400
