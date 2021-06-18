@@ -2,10 +2,6 @@ from classes.game import Game
 from classes.player import Player
 from classes.ball import Ball
 
-"""
-# from classes.sardina import Sardina
-# from classes.scoreUX import ScoreUX
-"""
 import pygame
 
 if __name__ == '__main__':
